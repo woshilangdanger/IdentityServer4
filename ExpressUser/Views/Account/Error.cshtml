@@ -1,0 +1,20 @@
+﻿@using ExpressUser.Models;
+@{
+    Layout = null;
+}
+@model Idr4ErrorViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    @if (Model != null)
+    {
+        <div>@Model.Error</div>
+        <div>@Model.ErrorDescription</div>
+        <div>@Model.RequestId</div>
+    }
+</body>
+</html>

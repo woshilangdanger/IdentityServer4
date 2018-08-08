@@ -1,0 +1,49 @@
+﻿<table class="layui-table">
+    <thead>
+        <tr>
+            <th>
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>ID</th>
+            <th>角色名</th>
+            <th>拥有权限规则</th>
+            <th>描述</th>
+            <th>状态</th>
+            <th>操作</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>超级管理员</td>
+            <td>会员列表，问题列表</td>
+            <td>具有至高无上的权利</td>
+            <td class="td-status">
+                <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>
+            </td>
+            <td class="td-manage">
+                <a onclick="member_stop(this,'10001')" href="javascript:;" title="启用">
+                    <i class="layui-icon">&#xe601;</i>
+                </a>
+                <a title="编辑" onclick="x_admin_show('编辑','Add')" href="javascript:;">
+                    <i class="layui-icon">&#xe642;</i>
+                </a>
+                <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                    <i class="layui-icon">&#xe640;</i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="page">
+    <div>
+        <a class="prev" href="">&lt;&lt;</a>
+        <a class="num" href="">1</a>
+        <span class="current">2</span>
+        <a class="num" href="">3</a>
+        <a class="num" href="">489</a>
+        <a class="next" href="">&gt;&gt;</a>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Models.ViewModel;
+@{
+    Layout = null;
+    var CheckBoxResult = ViewBag.CheckBox as List<CheckBoxResult>;
+}
+@model IdentityRole
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="~/css/font.css">
+    <link rel="stylesheet" href="~/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="x-body">
+        <form class="layui-form layui-form-pane">
+            <div class="layui-form-item">
+                <label for="name" class="layui-form-label">
+                    <span class="x-red">*</span>角色名
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="name" name="name" required="" lay-verify="required" value="@Model.Name"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">
+                    拥有权限
+                </label>
+                <table class="layui-table layui-input-block">
+                    <tbody>
+                        <tr>
+                            @*<td>
+                            <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i>用户管理</div><label lay-skin="primary" title="用户管理" />
+
+                        </td>*@
+                            <td>
+                                <div class="layui-input-block">
+                                    @foreach (var item in CheckBoxResult)
+                                    {
+                                        if (item.Checked)
+                                        {
+                                            <input type="checkbox" name="Role" lay-skin="primary" value="@item.Value" title="@item.Name" checked="checked">
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" name="Role" lay-skin="primary" value="@item.Value" title="@item.Name" />
+                                        }
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            @*<div class="layui-form-item layui-form-text">
+            <label for="desc" class="layui-form-label">
+                描述
+            </label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" id="desc" name="desc" class="layui-textarea"></textarea>
+            </div>
+        </div>*@
+            <div class="layui-form-item">
+                <button class="layui-btn" lay-submit="" lay-filter="add">修改</button>
+            </div>
+            <input type="hidden" id="userid" name="name" value="@Model.Id" />
+            <input type="hidden" id="ExistRole" name="name" value="@ViewBag.ExistRole" />
+        </form>
+    </div>
+    <script>
+        layui.use(['form', 'layer'], function () {
+            $ = layui.jquery;
+            var form = layui.form
+                , layer = layui.layer;
+            
+
+            //监听提交
+            form.on('submit(add)', function (data) {
+                //装载多选框的值
+                var standards = "";
+                $("input:checkbox[name='Role']:checked").each(function () { // 遍历name=standard的多选框
+                    standards += ',' + $(this).val();
+                });
+                var role = {
+                    id: $("#userid").val(),
+                    Name: $("#name").val(),
+                    Claims: standards,
+                    ExistClaim: $("#ExistRole").val()
+                }
+                $.post("/Identity/Role/Edit", { role: role }, function (data) {
+                    // console.log(data);
+                    if (data.code) {
+                        layer.alert(data.data, { icon: 6 }, function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+
+                        });
+                    }
+                    else { layer.alert(data.message); }
+
+                })
+                return false;
+            });
+
+
+        });</script>
+
+</body>
+</html>
