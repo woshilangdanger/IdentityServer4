@@ -183,13 +183,7 @@ namespace ExpressUser
             services.AddScoped<IUserStoreService, UserStoreService>();
             services.AddScoped<IProfileService, CustomProfileService>();
             services.AddScoped<IUserServices, UserServices>();
-            services.AddScoped<IRoleServices, RoleServices>();
-            services.AddScoped<IExamInfoServices, ExamInfoServices>();
-
-            services.AddScoped<IClassServices, ClassServices>();
-            services.AddScoped<ICourseServices, CourseServices>();
-            services.AddScoped<IRoomServices, RoomServices>();
-            services.AddScoped<ITeacherServices, TeacherServices>();
+          
 
             #region 授权登录
 

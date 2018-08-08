@@ -20,11 +20,11 @@ namespace ExpressUser.Areas.Identity.Controllers
     public class UserController : Controller
     {
         private readonly IUserServices _userServices;
-        private readonly IRoleServices _RoleServices;
-        public UserController(IUserServices userServices, IRoleServices RoleServices)
+    
+        public UserController(IUserServices userServices)
         {
             _userServices = userServices;
-            _RoleServices = RoleServices;
+        
         }
 
         public ActionResult Demo(int pageindex, int pagesize, string username)
@@ -78,8 +78,8 @@ namespace ExpressUser.Areas.Identity.Controllers
         // GET: User/Create
         public ActionResult Add()
         {
-            var RoleList = _RoleServices.Roles().ToList();
-            return View(RoleList);
+          
+            return View();
         }
 
         // POST: User/Create
@@ -108,37 +108,8 @@ namespace ExpressUser.Areas.Identity.Controllers
         // GET: User/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
-            //获取用户信息
-            var Model = await _userServices.FindByUserId(id);
-            //设置默认密码,检测密码是否改变
-            ViewBag.Pwd = "q!@*90";
-            //所有角色
-            var RoleList = _RoleServices.Roles().ToList();
-            //该用户所有角色
-            var roleres = await _userServices.UserRoles(Model);
-            List<string> UserRoles = roleres.ToList();
-
-            //复选框结果集
-            List<CheckBoxResult> checkbox = new List<CheckBoxResult>();
-            CheckBoxResult check = null;
-            foreach (var roles in RoleList)
-            {
-                check = new CheckBoxResult();
-                check.Name = roles.Name;
-                foreach (var item in UserRoles)
-                {
-                    if (item == roles.Name)
-                    {
-                        check.Checked = true;
-                    }
-                }
-                checkbox.Add(check);
-            }
-            //复选框结果集
-            ViewBag.CheckBox = checkbox;
-            //用户已经存在的所有角色
-            ViewBag.ExistRole = string.Join(",", UserRoles.ToArray());
-            return View(Model);
+            
+            return View();
         }
 
         // POST: User/Edit/5
