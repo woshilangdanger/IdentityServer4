@@ -43,7 +43,7 @@ namespace ExpressUser
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySql(userdbconfig.UserConnectString, builder =>
+                options.UseSqlServer(userdbconfig.UserConnectString, builder =>
                 {
                     builder.MigrationsAssembly(_migrationAssablyName);
                 });
@@ -206,7 +206,7 @@ namespace ExpressUser
               options.SaveTokens = true;
               options.ResponseType = "code id_token";
               options.GetClaimsFromUserInfoEndpoint = true;
-              options.Scope.Add("userservicesapi");
+              options.Scope.Add("expressapi");
               options.GetClaimsFromUserInfoEndpoint = true;
 
           });

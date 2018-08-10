@@ -22,7 +22,7 @@ namespace ExpressUser.Services.DbProvider
      
         public IDbConnection GetConnection()
         {
-           return   new MySqlConnection(_config.UserConnectString);
+           return   new SqlConnection(_config.UserConnectString);
      
         }
     }

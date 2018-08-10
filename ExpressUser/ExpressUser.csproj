@@ -51,7 +51,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Models\" />
-    <Folder Include="Data\Migrations\Identity\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
   <ItemGroup>
