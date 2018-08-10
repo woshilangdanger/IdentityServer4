@@ -1,6 +1,6 @@
 # IdentityServer4
 AspNetCoreIdentity+IdentityServer4
-
+博客地址：https://www.cnblogs.com/liyouming
 这是一个 IdentityServer4+AspNetCore.Identity集合的基础代码实例,主要包含如下：
 
 1、IdentityServer4 SignIn SignOut处理
