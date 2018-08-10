@@ -6,6 +6,10 @@ AspNetCoreIdentity+IdentityServer4
 
 另外我添加了一个 sqlserverbranch 分支 ,已经把先关修改都更改了，可以直接运行使用
 
+Mysql数据库请下载 Master 主干
+
+Sqlserver数据库请下载 sqlserverbranch 分支
+
 主要包含如下：
 
 1、IdentityServer4 SignIn SignOut处理
