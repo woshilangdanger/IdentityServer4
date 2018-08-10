@@ -206,7 +206,7 @@ namespace ExpressUser
               options.SaveTokens = true;
               options.ResponseType = "code id_token";
               options.GetClaimsFromUserInfoEndpoint = true;
-              options.Scope.Add("userservicesapi");
+              options.Scope.Add("expressapi");
               options.GetClaimsFromUserInfoEndpoint = true;
 
           });
