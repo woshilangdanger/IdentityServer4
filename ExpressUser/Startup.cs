@@ -57,11 +57,11 @@ namespace ExpressUser
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireDigit = false;
-               
+
 
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders()
+                .AddDefaultTokenProviders();
                // .AddClaimsPrincipalFactory<UserClaimsPrincipal>();
 
 
