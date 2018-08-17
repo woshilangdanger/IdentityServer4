@@ -62,7 +62,7 @@ namespace ExpressUser
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()
-                .AddClaimsPrincipalFactory<UserClaimsPrincipal>();
+               // .AddClaimsPrincipalFactory<UserClaimsPrincipal>();
 
 
             #endregion
@@ -176,12 +176,12 @@ namespace ExpressUser
             #endregion
             #region 添加授权验证方式
                      //.AddExtensionGrantValidator<CustomExtensionGrantUserServices>()
-                     .AddResourceOwnerValidator<CustomPasswordOwnerUserServices>()
+                    // .AddResourceOwnerValidator<CustomPasswordOwnerUserServices>()
                      //.AddSecretValidator<CustomUserClientSecretValidator>()
             #endregion
             .AddAspNetIdentity<IdentityUser>();
             services.AddScoped<IUserStoreService, UserStoreService>();
-            services.AddScoped<IProfileService, CustomProfileService>();
+         //  services.AddScoped<IProfileService, CustomProfileService>();
             services.AddScoped<IUserServices, UserServices>();
           
 
